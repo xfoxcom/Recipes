@@ -1,30 +1,41 @@
 package recipes;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.validation.Valid;
 
 @RestController
 public class Controller {
-    Map<Integer, Recipe> map = new ConcurrentHashMap<>();
+    @Autowired
+    private RecipeRepository repository;
+    public Controller (RecipeRepository repository) {
+        this.repository = repository;
+    }
     @PostMapping("/api/recipe/new")
-    public Map<String, Integer> addRecipe(@RequestBody Recipe recipe) {
-        int id = map.size() + 1;
-        if (map.isEmpty()) {
-            map.put(1, recipe);
-            return Map.of("id", 1);
-        } else map.put(id, recipe);
-        return Map.of("id", id);
+    public Response addRecipe(@Valid @RequestBody Recipe recipe) {
+        repository.save(recipe);
+        return new Response(recipe.getId());
     }
     @GetMapping("/api/recipe/{id}")
     public Recipe getRecipe(@PathVariable int id) {
-        if (!map.containsKey(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (repository.existsById(id)) {
+            return repository.findById(id).get();
         }
-return map.get(id);
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
+    @DeleteMapping("/api/recipe/{id}")
+    public void deleteRecipe(@PathVariable int id) {
+        if (repository.findById(id).isPresent()) {
+            repository.deleteById(id);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
 }
