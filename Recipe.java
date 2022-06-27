@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "recipes")
@@ -31,4 +32,7 @@ public class Recipe {
     @NotEmpty
     @Size(min = 1)
     private String[] directions;
+    @NotBlank
+    private String category;
+    private LocalDateTime dateTime;
 }
