@@ -34,5 +34,5 @@ public class Recipe {
     private String[] directions;
     @NotBlank
     private String category;
-    private LocalDateTime dateTime;
+    private LocalDateTime date;
 }

@@ -2,6 +2,7 @@ package recipes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
@@ -17,7 +18,7 @@ public class Controller {
     }
     @PostMapping("/api/recipe/new")
     public Response addRecipe(@Valid @RequestBody Recipe recipe) {
-        recipe.setDateTime(LocalDateTime.now());
+        recipe.setDate(LocalDateTime.now());
         repository.save(recipe);
         return new Response(recipe.getId());
     }
@@ -41,22 +42,23 @@ public class Controller {
     if (!repository.existsById(id)) {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
-    recipe.setDateTime(LocalDateTime.now());
+    recipe.setDate(LocalDateTime.now());
     recipe.setId(id);
     repository.save(recipe);
+       // ResponseEntity.noContent();
+    throw new ResponseStatusException(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/api/recipe/search")
-    public List<Recipe> findBy (@RequestParam(name = "category") String category, @RequestParam(name = "name") String name) {
-        if ((category == null & name == null) | (category != null & name != null)) {
+    public List<Recipe> findByCatOrName (@RequestParam(name = "category", defaultValue = "none") String category, @RequestParam(name = "name", defaultValue = "none") String name) {
+        if ((category.equals("none") & name.equals("none")) | (!category.equals("none") & !name.equals("none"))) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-
-        if (category != null) {
-           return repository.findRecipeByCategory(category);
+        if (!category.equals("none")) {
+           return repository.findByCategoryIgnoreCaseOrderByDateDesc(category);
         }
-        if (name != null) {
-            return repository.findRecipeByNameContaining(name);
+        if (!name.equals("none")) {
+            return repository.findByNameContainingIgnoreCaseOrderByDateDesc(name);
         }
         return List.of();
     }
