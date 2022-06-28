@@ -3,23 +3,34 @@ package recipes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class Controller {
     @Autowired
     private RecipeRepository repository;
-    public Controller (RecipeRepository repository) {
+    @Autowired
+    private UserRepository userRepository;
+    public Controller (RecipeRepository repository, UserRepository userRepository) {
         this.repository = repository;
+        this.userRepository = userRepository;
     }
     @PostMapping("/api/recipe/new")
-    public Response addRecipe(@Valid @RequestBody Recipe recipe) {
+    public Response addRecipe(@Valid @RequestBody Recipe recipe, Authentication auth) {
+        String email = auth.getName();
         recipe.setDate(LocalDateTime.now());
         repository.save(recipe);
+        User user = userRepository.findByEmail(email);
+        user.getList().add(recipe);
+        userRepository.save(user);
         return new Response(recipe.getId());
     }
     @GetMapping("/api/recipe/{id}")
@@ -30,20 +41,41 @@ public class Controller {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
     @DeleteMapping("/api/recipe/{id}")
-    public void deleteRecipe(@PathVariable int id) {
-        if (repository.findById(id).isPresent()) {
-            repository.deleteById(id);
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+    public void deleteRecipe(@PathVariable int id, Authentication auth) {
+        String email = auth.getName();
+        int count = 0;
+        List<Recipe> recipes = userRepository.findByEmail(email).getList();
+        for (Recipe recipe : recipes) {
+            if(recipe.getId() == id) count++;
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (repository.existsById(id) & count == 0) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+        if (count == 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        for (Recipe recipe : recipes) {
+            if (recipe.getId() == id) {
+                recipes.remove(recipe);
+                repository.deleteById(id);
+                throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+            }
+        }
     }
     @PutMapping("/api/recipe/{id}")
-    public void updateRecipe (@PathVariable int id, @Valid @RequestBody Recipe recipe) {
+    public void updateRecipe (@PathVariable int id, @Valid @RequestBody Recipe recipe, Authentication auth) {
     if (!repository.existsById(id)) {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
+    String email = auth.getName();
+    List<Recipe> recipes = userRepository.findByEmail(email).getList();
+    if (!recipes.contains(repository.getById(id))) {
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+    }
     recipe.setDate(LocalDateTime.now());
     recipe.setId(id);
+    userRepository.findByEmail(auth.getName()).getList().remove(repository.getById(id));
+    userRepository.findByEmail(auth.getName()).getList().add(recipe);
     repository.save(recipe);
        // ResponseEntity.noContent();
     throw new ResponseStatusException(HttpStatus.NO_CONTENT);
@@ -61,5 +93,19 @@ public class Controller {
             return repository.findByNameContainingIgnoreCaseOrderByDateDesc(name);
         }
         return List.of();
+    }
+    @PostMapping("/api/register")
+    public void register (@Valid @RequestBody User user) {
+        if (userRepository.existsById(user.getEmail())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        if (!user.getEmail().matches(".+@.+\\..+")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong format");
+        }
+        if (user.getPassword().length() < 8) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong format");
+        }
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        userRepository.save(new User(user.getEmail(), encoder.encode(user.getPassword()), new ArrayList<>()));
     }
 }
