@@ -4,21 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5153ab1-469d-4029-a405-9552ca6e946a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recipe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipesApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Response.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebSecurityConfigure.java" beforeDir="false" />
+    <list default="true" id="a5153ab1-469d-4029-a405-9552ca6e946a" name="Changes" comment="Refactoring">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/recipe.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/recipe.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/recipe.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/recipe.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/RecipeController/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/RecipeController/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/SecurityConf/WebSecurityConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/SecurityConf/WebSecurityConfigure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="module" />
+    </option>
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
@@ -129,6 +132,21 @@
       <option name="presentableId" value="Default" />
       <updated>1663684755271</updated>
     </task>
+    <task id="LOCAL-00001" summary="Refactoring">
+      <created>1667139410552</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667139410552</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactoring">
+      <created>1667139598403</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667139598403</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,5 +171,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
   </component>
 </project>

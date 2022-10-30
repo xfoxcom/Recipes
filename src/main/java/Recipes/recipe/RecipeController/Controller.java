@@ -83,7 +83,6 @@ public class Controller {
     userRepository.findByEmail(auth.getName()).getList().remove(repository.getById(id));
     userRepository.findByEmail(auth.getName()).getList().add(recipe);
     repository.save(recipe);
-       // ResponseEntity.noContent();
     throw new ResponseStatusException(HttpStatus.NO_CONTENT);
     }
 
