@@ -1,39 +1,26 @@
 package Recipes.recipe.RecipeController;
 
 import Recipes.recipe.Entities.Recipe;
-import Recipes.recipe.Entities.Response;
 import Recipes.recipe.Entities.User;
-import Recipes.recipe.Repositories.RecipeRepository;
-import Recipes.recipe.Repositories.UserRepository;
 import Recipes.recipe.Service.Implementation.RecipeServiceImp;
 import Recipes.recipe.Service.Implementation.UserServiceImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class Controller {
 
-    private RecipeRepository repository;
-
-    private UserRepository userRepository;
-
     private final UserServiceImp userServiceImp;
 
     private final RecipeServiceImp recipeServiceImp;
 
-    public Controller(RecipeRepository repository, UserRepository userRepository, UserServiceImp userServiceImp, RecipeServiceImp recipeServiceImp) {
-        this.repository = repository;
-        this.userRepository = userRepository;
+    public Controller(UserServiceImp userServiceImp, RecipeServiceImp recipeServiceImp) {
         this.userServiceImp = userServiceImp;
         this.recipeServiceImp = recipeServiceImp;
     }

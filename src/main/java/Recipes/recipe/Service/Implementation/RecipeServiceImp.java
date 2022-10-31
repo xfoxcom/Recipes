@@ -6,7 +6,6 @@ import Recipes.recipe.Repositories.RecipeRepository;
 import Recipes.recipe.Repositories.UserRepository;
 import Recipes.recipe.Service.RecipeService;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 

@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5153ab1-469d-4029-a405-9552ca6e946a" name="Changes" comment="Refactoring">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/RecipeServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/UserServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/RecipeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/RecipeController/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/RecipeController/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/SecurityConf/WebSecurityConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/SecurityConf/WebSecurityConfigure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/RecipeServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/RecipeServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/UserServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667140563558</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactoring">
+      <created>1667224011708</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667224011708</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
