@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5153ab1-469d-4029-a405-9552ca6e946a" name="Changes" comment="Refactoring">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/recipe.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/recipe.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/recipe.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/recipe.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/RecipeServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/Implementation/UserServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/RecipeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/RecipeController/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/RecipeController/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/Repositories/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Recipes/recipe/SecurityConf/WebSecurityConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Recipes/recipe/SecurityConf/WebSecurityConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +62,14 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -90,6 +101,9 @@
     <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2F2KUFYbDfR2yJnVmor6hakEkNA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -146,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667139598403</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refactoring">
+      <created>1667140563558</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667140563558</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
